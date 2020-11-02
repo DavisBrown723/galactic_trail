@@ -4,3 +4,4 @@ Library/*
 *.sln
 *.csproj
 obj/*
+.vscode/settings.json

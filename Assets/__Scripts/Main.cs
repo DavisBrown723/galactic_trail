@@ -80,7 +80,7 @@ public class Main : MonoBehaviour
     public void Restart() //Added pg576
     {
         //Reload _Scene_0 to restart the game
-        SceneManager.LoadScene("_Scene_0");
+        SceneManager.LoadScene("__Scene_GameOver");
     }
 
 }

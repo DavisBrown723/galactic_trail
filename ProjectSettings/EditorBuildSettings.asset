@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/_Scene_EarthShip.unity
     guid: b204eb3e064ba6b47972842dfaee2f90
+  - enabled: 1
+    path: Assets/Scenes/__Scene_GameOver.unity
+    guid: 7d97b28ce6832bf4080962d38e9d71cc
   m_configObjects: {}

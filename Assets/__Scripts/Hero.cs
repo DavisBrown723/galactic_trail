@@ -101,7 +101,7 @@ public class Hero : MonoBehaviour
     {
         Transform rootT = other.gameObject.transform.root;
         GameObject go = rootT.gameObject;
-        //print("Triggered: " + go.name);
+        // print("Triggered: " + go.name);
 
         //Make sure it's not the same triggering go as last time
         if(go == lastTriggerGo)

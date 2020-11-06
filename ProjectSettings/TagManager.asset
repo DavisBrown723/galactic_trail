@@ -10,6 +10,8 @@ TagManager:
   - ProjectileEnemy
   - PowerUp
   - PowerUpBox
+  - Alien
+  - Military
   layers:
   - Default
   - TransparentFX
@@ -24,8 +26,8 @@ TagManager:
   - ProjectileHero
   - ProjectileEnemy
   - PowerUp
-  - 
-  - 
+  - Alien
+  - Military
   - 
   - 
   - 

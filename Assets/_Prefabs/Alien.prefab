@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3470346228379866131}
   - component: {fileID: 3470346228379866130}
   - component: {fileID: 3470346228379866141}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Top (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 3470346228772452621}
   - component: {fileID: 3470346228772452620}
   - component: {fileID: 3470346228772452623}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Top (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 3470346229430775057}
   - component: {fileID: 3470346229430775056}
   - component: {fileID: 8093123199507819370}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: AlienShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 283bb9f8b5e855841afc812ef0ba905a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationsPerSecond: 0.6
+  rotationsPerSecond: 0.5
   levelShown: 0
 --- !u!1 &3470346229587763442
 GameObject:
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 3470346229587763446}
   - component: {fileID: 3470346229587763441}
   - component: {fileID: 3470346229587763440}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tail (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 3470346229628254442}
   - component: {fileID: 3470346229628254453}
   - component: {fileID: 3470346229628254452}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,9 +506,9 @@ GameObject:
   - component: {fileID: 3470346229908463513}
   - component: {fileID: 2951208351533644626}
   - component: {fileID: 768743633671445719}
-  m_Layer: 0
-  m_Name: AlienStyle
-  m_TagString: Untagged
+  m_Layer: 13
+  m_Name: Alien
+  m_TagString: Alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 3470346230042402866}
   - component: {fileID: 3470346230042402877}
   - component: {fileID: 3470346230042402876}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: MainHull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 3470346230122223575}
   - component: {fileID: 3470346230122223574}
   - component: {fileID: 3470346230122223569}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tail (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 3470346230162746179}
   - component: {fileID: 3470346230162746178}
   - component: {fileID: 3470346230162746189}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

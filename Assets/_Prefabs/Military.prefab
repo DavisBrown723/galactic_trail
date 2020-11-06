@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8584174824096522020}
   - component: {fileID: 8584174824096522027}
   - component: {fileID: 8584174824096522026}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Wing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 8584174824464766623}
   - component: {fileID: 8584174824464766622}
   - component: {fileID: 8584174824464766621}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Wing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 8584174824559517445}
   - component: {fileID: 8584174824559517444}
   - component: {fileID: 8584174824559517451}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Wing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 8584174824988254825}
   - component: {fileID: 8584174824988254824}
   - component: {fileID: 8584174824988254831}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Wing7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 8584174824994990417}
   - component: {fileID: 8584174824994990416}
   - component: {fileID: 8584174824994990423}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Wing6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,10 +486,10 @@ GameObject:
   - component: {fileID: 8584174825121410202}
   - component: {fileID: 8584174825121410196}
   - component: {fileID: 8494477797916137445}
-  - component: {fileID: 361794775572420523}
-  m_Layer: 0
-  m_Name: MilitaryStyle
-  m_TagString: Untagged
+  - component: {fileID: 7560651391583440691}
+  m_Layer: 14
+  m_Name: Military
+  m_TagString: Military
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -502,7 +502,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8584174825121410201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8584174824559517450}
@@ -553,7 +553,7 @@ MonoBehaviour:
   offLeft: 0
   offUp: 0
   offDown: 0
---- !u!114 &361794775572420523
+--- !u!114 &7560651391583440691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8584174825121410201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cc7e0c7bcd8755449f8280a0fb08037, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dbbb24834e881443aae0191c647d00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 8584174825157739550}
   - component: {fileID: 8584174825157739549}
   - component: {fileID: 8584174825157739548}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Wing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 8584174825179665449}
   - component: {fileID: 8584174825179665448}
   - component: {fileID: 8584174825179665455}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Wing5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,8 +774,8 @@ GameObject:
   - component: {fileID: 8584174826003708111}
   - component: {fileID: 8584174826003708110}
   - component: {fileID: 8584174826003708109}
-  - component: {fileID: 105396449713767637}
-  m_Layer: 0
+  - component: {fileID: 6446225998453863104}
+  m_Layer: 14
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -858,7 +858,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &105396449713767637
+--- !u!114 &6446225998453863104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -867,8 +867,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8584174826003708115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4799d4b9b065ae94a8173be8c0258a73, type: 3}
+  m_Script: {fileID: 11500000, guid: 6514caf1ae30a78469b780f9d7ff209e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationsPerSecond: 0.1
+  rotationsPerSecond: 0.4
   levelShown: 0

@@ -30,6 +30,7 @@ public class Main : MonoBehaviour
         GameObject scoreGO = GameObject.Find("ScoreCounter");
         scoreGT = scoreGO.GetComponent<Text>();
         scoreGT.text = "0";  
+        EnemiesMissed.numEnemies = 0;
     }// end Start()
 
 

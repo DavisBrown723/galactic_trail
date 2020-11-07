@@ -901,6 +901,7 @@ MonoBehaviour:
   - {fileID: 8629351711171884517, guid: 72dedb0f3116cbf4b9145d81a105fef6, type: 3}
   - {fileID: 6265558518787047865, guid: ca4f93147dc38984eb2cb5906a8fb33b, type: 3}
   - {fileID: 6971662208035381289, guid: 590f9adc10eb40b478775b3e36e8bd29, type: 3}
+  - {fileID: 8058103511363217375, guid: 90b92b512ca7400458a12c850101f256, type: 3}
   - {fileID: 8058103511363217375, guid: d6f071ae994904b478195fb0d231cfba, type: 3}
   prefabPowerup: {fileID: 553184435784992473, guid: c620e84188370c841bb61a732ea91182, type: 3}
   enemySpawnPerSecond: 0.5

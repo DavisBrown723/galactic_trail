@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI; // added 11/07
 public class Enemy : MonoBehaviour
 {
     [Header("Set in Inspector: Enemy")]
@@ -11,6 +11,19 @@ public class Enemy : MonoBehaviour
     public int score = 100;         //points earned for destroying this
 
     private BoundsCheck bndCheck;
+
+     [Header("Set Dynamically")]
+
+    // Attempting to add scoring code on 11/07/2020, following apple picker prototype for now
+    // probably not exactly what we want, but if it works, we can modify it from here. 
+    public Text scoreGT;
+
+    void Start(){
+        GameObject scoreGO = GameObject.Find("ScoreCounter");
+        scoreGT = scoreGO.GetComponent<Text>();
+        scoreGT.text = "Enemies hit: 0";
+
+    }// end Start()
 
     void Awake()
     {
@@ -55,6 +68,9 @@ public class Enemy : MonoBehaviour
         {
             Destroy(otherGO);
             Destroy(gameObject);
+            int score = int.Parse(scoreGT.text);
+            score+=1;
+            scoreGT.text = "Enemies hit: " + score.ToString();
         }
         else
         {

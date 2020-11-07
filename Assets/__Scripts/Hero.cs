@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Hero : MonoBehaviour
 {
     static public Hero s;       //Singleton
@@ -23,6 +24,8 @@ public class Hero : MonoBehaviour
     private GameObject lastTriggerGo = null;    //added on pg573
     private FireMode currFireMode = FireMode.Basic;
     private int shotsRemaining = -1;
+
+    
 
 
     void Awake()
@@ -114,6 +117,7 @@ public class Hero : MonoBehaviour
         {
             shieldLevel--;
             Destroy(go);
+            
         }
         else if (go.tag == "PowerUp")
         {

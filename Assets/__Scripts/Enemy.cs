@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
         if(bndCheck != null && bndCheck.offDown)
         {//Updated on page 565-566
             Destroy(gameObject);
+            EnemiesMissed.numEnemies+=1;
         }
     }
 

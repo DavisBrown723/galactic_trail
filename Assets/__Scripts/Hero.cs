@@ -117,6 +117,8 @@ public class Hero : MonoBehaviour
         {
             shieldLevel--;
             Destroy(go);
+            // maybe count this as a missed enemy?
+            EnemiesMissed.numEnemies+=1;
             
         }
         else if (go.tag == "PowerUp")

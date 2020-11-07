@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Ship
 {
     [Header("Set in Inspector: Enemy")]
     public float speed = 10f;       //the speed in m/s
@@ -16,20 +16,6 @@ public class Enemy : MonoBehaviour
     {
         bndCheck = GetComponent<BoundsCheck>();
     }
-    
-    //This is a property: a method that acts like a field
-    public Vector3 pos
-    {
-        get
-        {
-            return (this.transform.position);
-        }
-        set
-        {
-            this.transform.position = value;
-        }
-    }
-
 
     // Update is called once per frame
     void Update()

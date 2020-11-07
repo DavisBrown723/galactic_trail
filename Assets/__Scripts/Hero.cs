@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hero : MonoBehaviour
+public class Hero : Ship
 {
     static public Hero s;       //Singleton
     public enum FireMode { Basic, Triangle };
@@ -24,9 +24,17 @@ public class Hero : MonoBehaviour
     private FireMode currFireMode = FireMode.Basic;
     private int shotsRemaining = -1;
 
+    public Hero() {
+
+    } 
 
     void Awake()
     {
+        addWeapon("Basic", new StandardWeapon(this, projectilePrefab, 40, -1));
+        addWeapon("Shotgun", new ShotgunWeapon(this, projectilePrefab, 40, -1));
+
+        selectWeapon("Shotgun");
+
         if (s == null)
         {
             s = this;
@@ -36,9 +44,6 @@ public class Hero : MonoBehaviour
             Debug.LogError("Hero.Awake() - Attempted to assign second Hero.S!");
         }
     }
-
-
-   
 
     // Update is called once per frame
     void Update()
@@ -59,7 +64,8 @@ public class Hero : MonoBehaviour
         // Allow the ship to fire //Added pg579
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TempFire();
+            // TempFire();
+            FireWeapon();
         }
     }
 

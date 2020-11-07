@@ -834,6 +834,9 @@ MonoBehaviour:
   - {fileID: 3472810793404115469, guid: 90283eecd6a36a842b938d1efd955f5f, type: 3}
   - {fileID: 3961196867334191870, guid: 70d14ffcded2a8a49b913c16193c3104, type: 3}
   - {fileID: 6245276836489760558, guid: 1161353fb25287641aef3d6965800211, type: 3}
+  - {fileID: 8629351711171884517, guid: 72dedb0f3116cbf4b9145d81a105fef6, type: 3}
+  - {fileID: 6265558518787047865, guid: ca4f93147dc38984eb2cb5906a8fb33b, type: 3}
+  - {fileID: 5511694436742954082, guid: c2c6ca1039786ca468b4acc91d0d1aa0, type: 3}
   prefabPowerup: {fileID: 553184435784992473, guid: c620e84188370c841bb61a732ea91182, type: 3}
   enemySpawnPerSecond: 0.5
   enemyDefaultPadding: 1.5

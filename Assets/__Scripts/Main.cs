@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; // added 11/07
 
 public class Main : MonoBehaviour
 {
@@ -15,6 +16,28 @@ public class Main : MonoBehaviour
     public float powerUpSpawnPerSecond = 0.05f;
 
     private BoundsCheck bndCheck;
+ 
+    [Header("Set Dynamically")] // 11/07 kat
+
+    // Attempting to add scoring code on 11/07/2020, following apple picker prototype for now
+    // probably not exactly what we want, but if it works, we can modify it from here. 
+    public static Text scoreGT; // 11/07 kat, this is assigned in Main.cs because having
+                         // a start() method here does not work well (every time 
+                         // an enemy is spawned, start() is called and it's reset to 0. yikes!)
+
+      void Start(){
+        GameObject scoreGO = GameObject.Find("ScoreCounter");
+        scoreGT = scoreGO.GetComponent<Text>();
+        /*
+            update 4: I think i know what is happening. Start() is called
+            with EACH new spawned enemy... yikes.
+            
+            Finally adding it to Main.cs. hopefully this will help
+        
+        */
+        scoreGT.text = "0";
+
+    }// end Start()
 
 
     void Awake()

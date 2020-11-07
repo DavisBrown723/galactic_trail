@@ -12,25 +12,7 @@ public class Enemy : MonoBehaviour
 
     private BoundsCheck bndCheck;
 
-     [Header("Set Dynamically")] // 11/07 kat
-
-    // Attempting to add scoring code on 11/07/2020, following apple picker prototype for now
-    // probably not exactly what we want, but if it works, we can modify it from here. 
-    public Text scoreGT; // 11/07 kat
-
-    void Start(){
-        GameObject scoreGO = GameObject.Find("ScoreCounter");
-        scoreGT = scoreGO.GetComponent<Text>();
-        /*
-            This is from the apple picker prototype. When I uncomment the following line,
-            it always resets the score to zero when playing. Have not figured this out 
-            yet, probably because I am hungry. For now, it is commented and the 
-            score does not go back to 0. - Kat 11/07
-        
-        */
-        // scoreGT.text = "0";
-
-    }// end Start()
+    
 
     void Awake()
     {
@@ -76,9 +58,13 @@ public class Enemy : MonoBehaviour
             Destroy(otherGO);
             Destroy(gameObject);
             // 11/07 kat:
-            int score = int.Parse(scoreGT.text);
+            int score = int.Parse(Main.scoreGT.text);
             score+=1;
-            scoreGT.text = score.ToString();
+            Main.scoreGT.text = score.ToString();
+
+            if(score > HighScore.score){
+                HighScore.score = score;
+            }
         }
         else
         {

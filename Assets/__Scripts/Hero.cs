@@ -21,19 +21,23 @@ public class Hero : Ship
     private float _shieldLevel = 1;
 
     private GameObject lastTriggerGo = null;    //added on pg573
-    private FireMode currFireMode = FireMode.Basic;
-    private int shotsRemaining = -1;
+
+    private string[] weaponSlots = new string[] {"","","",""};
+    int selectedWeaponSlot = 0;
 
     public Hero() {
 
-    } 
+    }
 
     void Awake()
     {
-        addWeapon("Basic", new StandardWeapon(this, projectilePrefab, 40, -1));
-        addWeapon("Shotgun", new ShotgunWeapon(this, projectilePrefab, 40, -1));
+        addWeapon(new StandardWeapon("Basic", this, projectilePrefab, 40, -1));
+        addWeapon(new ShotgunWeapon("Shotgun", this, projectilePrefab, 40, -1));
 
-        selectWeapon("Shotgun");
+        assignWeaponToSlot(getWeapon("Basic"), 0);
+        assignWeaponToSlot(getWeapon("Shotgun"), 1);
+
+        selectWeapon("Basic");
 
         if (s == null)
         {
@@ -64,43 +68,32 @@ public class Hero : Ship
         // Allow the ship to fire //Added pg579
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // TempFire();
             FireWeapon();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) {
+            Debug.Log("Weapon 1");
+           selectWeaponSlot(0);
+        } else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) {
+            Debug.Log("Weapon 2");
+            selectWeaponSlot(1);
+        } else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) {
+            selectWeaponSlot(2);
+        } else if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4)) {
+            selectWeaponSlot(3);
         }
     }
 
-    void TempFire() //Added pg579
-    {
-        switch (currFireMode)
-        {
-            case FireMode.Basic:
-                {
-                    GameObject projGO = Instantiate<GameObject>(projectilePrefab);
-                    projGO.transform.position = transform.position;
-                    Rigidbody rigidB = projGO.GetComponent<Rigidbody>();
-                    rigidB.velocity = Vector3.up * projectileSpeed;
-                    break;
-                }
-            case FireMode.Triangle: {
-                    GameObject projLeft = Instantiate<GameObject>(projectilePrefab);
-                    projLeft.transform.position = transform.position;
-                    projLeft.GetComponent<Rigidbody>().velocity = Vector3.up * projectileSpeed + Vector3.left * projectileSpeed;
+    void assignWeaponToSlot(Weapon weapon, int slot) {
+        weaponSlots[slot] = weapon.name;
+    }
 
-                    GameObject projMiddle = Instantiate<GameObject>(projectilePrefab);
-                    projMiddle.transform.position = transform.position;
-                    projMiddle.GetComponent<Rigidbody>().velocity = Vector3.up * projectileSpeed;
+    void selectWeaponSlot(int slot) {
+        if (slot < 0 || slot > 3)
+            return;
 
-                    GameObject projRight = Instantiate<GameObject>(projectilePrefab);
-                    projRight.transform.position = transform.position;
-                    projRight.GetComponent<Rigidbody>().velocity = Vector3.up * projectileSpeed + Vector3.right * projectileSpeed;
-                    break;
-                }
-        }
-
-        if (--shotsRemaining == 0)
-        {
-            currFireMode = FireMode.Basic;
-        }
+        selectedWeaponSlot = slot;
+        selectWeapon(weaponSlots[slot]);
     }
 
     void OnTriggerEnter(Collider other)
@@ -123,9 +116,6 @@ public class Hero : Ship
         }
         else if (go.tag == "PowerUp")
         {
-            currFireMode = FireMode.Triangle;
-            shotsRemaining = 5;
-
             Destroy(go);
         }
         else

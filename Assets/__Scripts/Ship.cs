@@ -23,11 +23,11 @@ public class Ship : MonoBehaviour
         return weapons.ContainsKey(name);
     }
 
-    public bool addWeapon(string name, Weapon weapon) {
-        if (hasWeapon(name))
+    public bool addWeapon(Weapon weapon) {
+        if (hasWeapon(weapon.name))
             return false;
 
-        weapons.Add(name, weapon);
+        weapons.Add(weapon.name, weapon);
         return true;
     }
 

@@ -6,7 +6,7 @@ public class ShotgunWeapon : Weapon
 {
     private GameObject projectilePrefab;
 
-    public ShotgunWeapon(Ship parent, GameObject projPrefab, float muzzleVelocity, int ammo) : base(parent, muzzleVelocity, ammo) {
+    public ShotgunWeapon(string weaponName, Ship parent, GameObject projPrefab, float muzzleVelocity, int ammo) : base(weaponName, parent, muzzleVelocity, ammo) {
         projectilePrefab = projPrefab;
     }
 

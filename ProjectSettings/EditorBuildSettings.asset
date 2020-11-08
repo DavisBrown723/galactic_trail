@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/__Scene_01.unity
     guid: 5828bd556f9c75b44b6bd9a236f4fdb3
   - enabled: 0
-    path: Assets/Scenes/__Scene_012_ForTesting.unity
+    path: Assets/Scenes/TestingScenes/__Scene_012_ForTesting.unity
     guid: afc368757e120294fa89cc53a30d3f87
   - enabled: 1
     path: Assets/Scenes/_Scene_AlienShip.unity

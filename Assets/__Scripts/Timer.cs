@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
+    // 11/08/20 From:
+    // https://gamedevbeginner.com/how-to-make-countdown-timer-in-unity-minutes-seconds/
     public float timeRemaining = 60;
     public bool timerIsRunning = false;
     public Text textTime;
+   
 
     private void Start()
     {
@@ -32,7 +36,12 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                Debug.Log("Time has run out!");
+                
+                // Here is where we can load the next level, right now it's 
+                // just the game over scene
+                SceneManager.LoadScene("__Scene_GameOver");
+
+                // Debug.Log("Time has run out!");
                 timeRemaining = 0;
                 timerIsRunning = false;
             }

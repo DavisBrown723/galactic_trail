@@ -467,6 +467,7 @@ MonoBehaviour:
   score: 100
   HealthPack: {fileID: 0}
   cargo0: {fileID: 6740898652006862322, guid: 1e23496bef92f5d41a436f0e480a852f, type: 3}
+  cargo1: {fileID: 6740898652006862322, guid: a8dba2c2619859c4aa18f4c3ade4a121, type: 3}
 --- !u!114 &8058103511363217372
 MonoBehaviour:
   m_ObjectHideFlags: 0

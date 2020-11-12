@@ -114,7 +114,7 @@ public class Hero : MonoBehaviour
         }
         lastTriggerGo = go;
         
-        if (go.tag == "Enemy" || go.tag == "MedicalShip")
+        if (go.tag == "Enemy" || go.tag == "MedicalShip" || go.tag == "CargoShip")
         {
             shieldLevel--;
             Destroy(go);
@@ -126,12 +126,14 @@ public class Hero : MonoBehaviour
         {
             currFireMode = FireMode.Triangle;
             shotsRemaining = 5;
-
             Destroy(go);
         }else if(go.tag == "HealthPack"){
           
             shieldLevel++;
             Destroy(go);
+        }else if(go.tag == "Cargo"){
+            Destroy(go);
+            print("Triggered Cargo");
         }else
         {
             print("Triggered by non-Enemy: " + go.name);

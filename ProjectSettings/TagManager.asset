@@ -15,6 +15,7 @@ TagManager:
   - MedicalShip
   - HealthPack
   - CargoShip
+  - Cargo
   layers:
   - Default
   - TransparentFX

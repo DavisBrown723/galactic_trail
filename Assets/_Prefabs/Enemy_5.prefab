@@ -3007,11 +3007,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28fb47decb58ea8469bd6f5c8deaeec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 8
   fireRate: 0.3
   health: 10
   score: 100
-  HealthPack: {fileID: 6740898652006862322, guid: ebcb6ee6fba4cd34c865c24792e69eea, type: 3}
+  HealthPack: {fileID: 0}
 --- !u!114 &8629351711171884516
 MonoBehaviour:
   m_ObjectHideFlags: 0

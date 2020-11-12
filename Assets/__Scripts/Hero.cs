@@ -119,7 +119,7 @@ public class Hero : MonoBehaviour
             shieldLevel--;
             Destroy(go);
             // maybe count this as a missed enemy?
-            EnemiesMissed.numEnemies+=1;
+            EnemiesMissed.numEnemies = EnemiesMissed.numEnemies + 1;
             
         }
         else if (go.tag == "PowerUp")
@@ -132,8 +132,9 @@ public class Hero : MonoBehaviour
             shieldLevel++;
             Destroy(go);
         }else if(go.tag == "Cargo"){
+            CargoPickUp.numCargo = CargoPickUp.numCargo + 1;
             Destroy(go);
-            print("Triggered Cargo");
+            // print("Triggered Cargo");
         }else
         {
             print("Triggered by non-Enemy: " + go.name);

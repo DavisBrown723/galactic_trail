@@ -36,4 +36,4 @@ public class Shield : MonoBehaviour
         float rZ = -(rotationsPerSecond * Time.time * 360) % 360f;
         transform.rotation = Quaternion.Euler(0, 0, rZ);        //Used to rotate slowly about the Z-axis
     }
-}
+}// end class Shield

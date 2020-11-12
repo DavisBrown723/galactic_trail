@@ -31,6 +31,7 @@ public class Main : MonoBehaviour
         scoreGT = scoreGO.GetComponent<Text>();
         scoreGT.text = "0";  
         EnemiesMissed.numEnemies = 0;
+        CargoPickUp.numCargo = 0;
     }// end Start()
 
 

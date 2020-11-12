@@ -16,6 +16,7 @@ public class Hero : MonoBehaviour
     public float gameRestartDelay = 2f; //Added on pg575
     public GameObject projectilePrefab; //Added on pg578
     public float projectileSpeed = 40;
+    
 
     [Header("Set Dynamically")]
     [SerializeField]                    //Added/Edited pg574
@@ -128,6 +129,7 @@ public class Hero : MonoBehaviour
 
             Destroy(go);
         }else if(go.tag == "HealthPack"){
+          
             shieldLevel++;
             Destroy(go);
         }else

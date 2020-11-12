@@ -5,7 +5,7 @@ using UnityEngine.UI; // added 11/07
 public class Enemy : MonoBehaviour
 {
     
-    Vector3 medShipPos;
+    Vector3 shipPOS;
     [Header("Set in Inspector: Enemy")]
     public float speed = 10f;       //the speed in m/s
     public float fireRate = 0.3f;   //seconds/shot (unused)
@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
 
     private BoundsCheck bndCheck;
     public GameObject HealthPack;
+    public GameObject cargo0;
+    
     
     
 
@@ -60,16 +62,24 @@ public class Enemy : MonoBehaviour
         GameObject otherGO = coll.gameObject;
         if(otherGO.tag == "ProjectileHero")
         {
+            shipPOS = gameObject.transform.position;
             int score = int.Parse(Main.scoreGT.text);
             if(gameObject.tag == "MedicalShip"){
-                medShipPos = gameObject.transform.position;
                 Destroy(otherGO);
                 Destroy(gameObject);
                 score+=1;
                 Main.scoreGT.text = score.ToString();
                 GameObject healthPack = Instantiate<GameObject>(HealthPack);
-                healthPack.transform.position = medShipPos;
-                print("Inside if statement!");
+                healthPack.transform.position = shipPOS;
+                // print("Inside if statement!");
+
+            }else if(gameObject.tag == "CargoShip"){
+                Destroy(otherGO);
+                Destroy(gameObject);
+                score+=1;
+                Main.scoreGT.text = score.ToString();
+                GameObject cargo = Instantiate<GameObject>(cargo0);
+                cargo.transform.position = shipPOS;
 
             }else{
                 Destroy(otherGO);

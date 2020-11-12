@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 8058103511363217372}
   m_Layer: 9
   m_Name: CargoShip_0
-  m_TagString: Enemy
+  m_TagString: CargoShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -466,6 +466,7 @@ MonoBehaviour:
   health: 10
   score: 100
   HealthPack: {fileID: 0}
+  cargo0: {fileID: 6740898652006862322, guid: 1e23496bef92f5d41a436f0e480a852f, type: 3}
 --- !u!114 &8058103511363217372
 MonoBehaviour:
   m_ObjectHideFlags: 0

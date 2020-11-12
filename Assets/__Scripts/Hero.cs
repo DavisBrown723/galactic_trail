@@ -116,11 +116,11 @@ public class Hero : MonoBehaviour
         
         if (go.tag == "Enemy" || go.tag == "MedicalShip" || go.tag == "CargoShip")
         {
+            if(go.tag == "Enemy"){
+                EnemiesMissed.numEnemies = EnemiesMissed.numEnemies + 1;
+            }
             shieldLevel--;
-            Destroy(go);
-            // maybe count this as a missed enemy?
-            EnemiesMissed.numEnemies = EnemiesMissed.numEnemies + 1;
-            
+            Destroy(go); 
         }
         else if (go.tag == "PowerUp")
         {

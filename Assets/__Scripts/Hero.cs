@@ -127,8 +127,10 @@ public class Hero : MonoBehaviour
             shotsRemaining = 5;
 
             Destroy(go);
-        }
-        else
+        }else if(go.tag == "HealthPack"){
+            shieldLevel++;
+            Destroy(go);
+        }else
         {
             print("Triggered by non-Enemy: " + go.name);
         }

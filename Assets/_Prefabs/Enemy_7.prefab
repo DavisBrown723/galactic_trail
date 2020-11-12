@@ -1413,6 +1413,7 @@ MonoBehaviour:
   fireRate: 0.3
   health: 10
   score: 100
+  HealthPack: {fileID: 6740898652006862322, guid: ebcb6ee6fba4cd34c865c24792e69eea, type: 3}
 --- !u!114 &6971662208035381295
 MonoBehaviour:
   m_ObjectHideFlags: 0

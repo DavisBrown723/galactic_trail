@@ -12,6 +12,8 @@ TagManager:
   - PowerUpBox
   - Alien
   - Military
+  - MedicalShip
+  - HealthPack
   layers:
   - Default
   - TransparentFX

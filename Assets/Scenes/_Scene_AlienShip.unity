@@ -1000,17 +1000,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabEnemies:
-  - {fileID: 6731703136833169373, guid: 3a8dec79bb6db4e47b88500063608a4c, type: 3}
-  - {fileID: 6392198222401274841, guid: 3533663c148a8bc4788cb4412cf8c50c, type: 3}
-  - {fileID: 3472810793404115469, guid: 90283eecd6a36a842b938d1efd955f5f, type: 3}
-  - {fileID: 3961196867334191870, guid: 70d14ffcded2a8a49b913c16193c3104, type: 3}
-  - {fileID: 6245276836489760558, guid: 1161353fb25287641aef3d6965800211, type: 3}
   - {fileID: 8629351711171884517, guid: 72dedb0f3116cbf4b9145d81a105fef6, type: 3}
   - {fileID: 6265558518787047865, guid: ca4f93147dc38984eb2cb5906a8fb33b, type: 3}
   - {fileID: 6971662208035381289, guid: 590f9adc10eb40b478775b3e36e8bd29, type: 3}
-  - {fileID: 5511694436742954082, guid: c2c6ca1039786ca468b4acc91d0d1aa0, type: 3}
   - {fileID: 8058103511363217375, guid: 90b92b512ca7400458a12c850101f256, type: 3}
   - {fileID: 8058103511363217375, guid: d6f071ae994904b478195fb0d231cfba, type: 3}
+  - {fileID: 5511694436742954082, guid: c2c6ca1039786ca468b4acc91d0d1aa0, type: 3}
   prefabPowerup: {fileID: 553184435784992473, guid: c620e84188370c841bb61a732ea91182, type: 3}
   enemySpawnPerSecond: 0.5
   enemyDefaultPadding: 1.5
@@ -1308,7 +1303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2563ef1be1b739745aee4b88d47f7a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 10
+  timeRemaining: 60
   timerIsRunning: 0
   textTime: {fileID: 1726837962}
 --- !u!114 &1726837962

@@ -556,7 +556,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 99, y: -25}
+  m_AnchoredPosition: {x: 99, y: -20}
   m_SizeDelta: {x: 256, y: 32}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &551586802
@@ -884,6 +884,7 @@ RectTransform:
   - {fileID: 551586801}
   - {fileID: 1628893120}
   - {fileID: 1461972155}
+  - {fileID: 799116721}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -892,6 +893,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &799116720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 799116721}
+  - component: {fileID: 799116723}
+  - component: {fileID: 799116722}
+  m_Layer: 5
+  m_Name: CargoRetrievedText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &799116721
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799116720}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 723587041}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10, y: -20}
+  m_SizeDelta: {x: 256, y: 32}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &799116722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799116720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
+    m_FontSize: 16
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 0
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 0
+  m_Text: 'Cargo Retrieved:'
+--- !u!222 &799116723
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799116720}
+  m_CullTransparentMesh: 0
 --- !u!1 &862316386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,20 +1183,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabEnemies:
-  - {fileID: 6731703136833169373, guid: 3a8dec79bb6db4e47b88500063608a4c, type: 3}
-  - {fileID: 6392198222401274841, guid: 3533663c148a8bc4788cb4412cf8c50c, type: 3}
-  - {fileID: 3472810793404115469, guid: 90283eecd6a36a842b938d1efd955f5f, type: 3}
-  - {fileID: 3961196867334191870, guid: 70d14ffcded2a8a49b913c16193c3104, type: 3}
-  - {fileID: 6245276836489760558, guid: 1161353fb25287641aef3d6965800211, type: 3}
   - {fileID: 8629351711171884517, guid: 72dedb0f3116cbf4b9145d81a105fef6, type: 3}
   - {fileID: 6265558518787047865, guid: ca4f93147dc38984eb2cb5906a8fb33b, type: 3}
   - {fileID: 6971662208035381289, guid: 590f9adc10eb40b478775b3e36e8bd29, type: 3}
-  - {fileID: 5511694436742954082, guid: c2c6ca1039786ca468b4acc91d0d1aa0, type: 3}
   - {fileID: 8058103511363217375, guid: 90b92b512ca7400458a12c850101f256, type: 3}
   - {fileID: 8058103511363217375, guid: d6f071ae994904b478195fb0d231cfba, type: 3}
+  - {fileID: 5511694436742954082, guid: c2c6ca1039786ca468b4acc91d0d1aa0, type: 3}
   prefabPowerup: {fileID: 553184435784992473, guid: c620e84188370c841bb61a732ea91182, type: 3}
-  enemySpawnPerSecond: 0.5
-  enemyDefaultPadding: 1.5
+  enemySpawnPerSecond: 0.25
+  enemyDefaultPadding: 2
   powerUpSpawnPerSecond: 0.1
 --- !u!1 &1461972154
 GameObject:
@@ -1387,7 +1462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 185, y: -25}
+  m_AnchoredPosition: {x: 185, y: -20}
   m_SizeDelta: {x: 256, y: 32}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1973237145

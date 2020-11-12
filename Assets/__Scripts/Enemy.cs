@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI; // added 11/07
 public class Enemy : MonoBehaviour
 {
+    
+    Vector3 medShipPos;
     [Header("Set in Inspector: Enemy")]
     public float speed = 10f;       //the speed in m/s
     public float fireRate = 0.3f;   //seconds/shot (unused)
@@ -11,7 +13,8 @@ public class Enemy : MonoBehaviour
     public int score = 100;         //points earned for destroying this
 
     private BoundsCheck bndCheck;
-
+    public GameObject HealthPack;
+    
     
 
     void Awake()
@@ -53,15 +56,28 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)    //Added pg580
     {
+        
         GameObject otherGO = coll.gameObject;
         if(otherGO.tag == "ProjectileHero")
         {
-            Destroy(otherGO);
-            Destroy(gameObject);
-            // 11/07 kat:
             int score = int.Parse(Main.scoreGT.text);
-            score+=1;
-            Main.scoreGT.text = score.ToString();
+            if(gameObject.tag == "MedicalShip"){
+                medShipPos = gameObject.transform.position;
+                Destroy(otherGO);
+                Destroy(gameObject);
+                score+=1;
+                Main.scoreGT.text = score.ToString();
+                GameObject healthPack = Instantiate<GameObject>(HealthPack);
+                healthPack.transform.position = medShipPos;
+                print("Inside if statement!");
+
+            }else{
+                Destroy(otherGO);
+                Destroy(gameObject);
+                score+=1;
+                Main.scoreGT.text = score.ToString();
+
+            }
 
             if(score > HighScore.score){
                 HighScore.score = score;

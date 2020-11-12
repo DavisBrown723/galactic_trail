@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hero : Ship
 {
@@ -23,7 +24,7 @@ public class Hero : Ship
     private GameObject lastTriggerGo = null;    //added on pg573
 
     private string[] weaponSlots = new string[] {"","","",""};
-    int selectedWeaponSlot = 0;
+    int selectedWeaponSlot = -1;
 
     public Hero() {
 
@@ -37,7 +38,7 @@ public class Hero : Ship
         assignWeaponToSlot(getWeapon("Basic"), 0);
         assignWeaponToSlot(getWeapon("Shotgun"), 1);
 
-        selectWeapon("Basic");
+        selectWeaponSlot(0);
 
         if (s == null)
         {
@@ -72,10 +73,8 @@ public class Hero : Ship
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) {
-            Debug.Log("Weapon 1");
            selectWeaponSlot(0);
         } else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) {
-            Debug.Log("Weapon 2");
             selectWeaponSlot(1);
         } else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) {
             selectWeaponSlot(2);
@@ -89,11 +88,25 @@ public class Hero : Ship
     }
 
     void selectWeaponSlot(int slot) {
-        if (slot < 0 || slot > 3)
+        if (slot < 0 || slot > 3 || getWeapon(weaponSlots[slot]) == null)
             return;
+
+        if (selectedWeaponSlot >= 0) {
+            string oldButtonName = "ButtonWeapon" + selectedWeaponSlot.ToString();
+            var oldSelButton = GameObject.Find(oldButtonName).GetComponent<Button>();
+            var oldColors = oldSelButton.colors;
+            oldColors.normalColor = Color.white;
+            oldSelButton.colors = oldColors;
+        }
 
         selectedWeaponSlot = slot;
         selectWeapon(weaponSlots[slot]);
+
+        string newButtonName = "ButtonWeapon" + slot.ToString();
+        var newSelButton = GameObject.Find(newButtonName).GetComponent<Button>();
+        var newColors = newSelButton.colors;
+        newColors.normalColor = Color.blue;
+        newSelButton.colors = newColors;
     }
 
     void OnTriggerEnter(Collider other)

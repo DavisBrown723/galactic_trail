@@ -9,6 +9,7 @@ public class PowerUp : MonoBehaviour
 
     private BoundsCheck bndCheck;
 
+
     void Awake()
     {
         bndCheck = GetComponent<BoundsCheck>();
@@ -44,10 +45,15 @@ public class PowerUp : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
+        
         GameObject collidedWith = coll.gameObject;
         if (collidedWith.tag == "Hero")
         {
+            
+            /// print("Inside OnCollision Enter");
             Destroy(gameObject);
+            
         }
+      
     }
 }

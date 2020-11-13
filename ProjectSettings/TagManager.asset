@@ -10,6 +10,12 @@ TagManager:
   - ProjectileEnemy
   - PowerUp
   - PowerUpBox
+  - Alien
+  - Military
+  - MedicalShip
+  - HealthPack
+  - CargoShip
+  - Cargo
   layers:
   - Default
   - TransparentFX
@@ -24,8 +30,8 @@ TagManager:
   - ProjectileHero
   - ProjectileEnemy
   - PowerUp
-  - 
-  - 
+  - Alien
+  - Military
   - 
   - 
   - 

@@ -16,6 +16,7 @@ public class Hero : Ship
     public float gameRestartDelay = 2f; //Added on pg575
     public GameObject projectilePrefab; //Added on pg578
     public float projectileSpeed = 40;
+    
 
     [Header("Set Dynamically")]
     [SerializeField]                    //Added/Edited pg574
@@ -113,7 +114,7 @@ public class Hero : Ship
     {
         Transform rootT = other.gameObject.transform.root;
         GameObject go = rootT.gameObject;
-        //print("Triggered: " + go.name);
+        // print("Triggered: " + go.name);
 
         //Make sure it's not the same triggering go as last time
         if(go == lastTriggerGo)
@@ -122,16 +123,26 @@ public class Hero : Ship
         }
         lastTriggerGo = go;
         
-        if (go.tag == "Enemy")
+        if (go.tag == "Enemy" || go.tag == "MedicalShip" || go.tag == "CargoShip")
         {
+            if(go.tag == "Enemy"){
+                EnemiesMissed.numEnemies = EnemiesMissed.numEnemies + 1;
+            }
             shieldLevel--;
-            Destroy(go);
+            Destroy(go); 
         }
         else if (go.tag == "PowerUp")
         {
             Destroy(go);
-        }
-        else
+        }else if(go.tag == "HealthPack"){
+          
+            shieldLevel++;
+            Destroy(go);
+        }else if(go.tag == "Cargo"){
+            CargoPickUp.numCargo = CargoPickUp.numCargo + 1;
+            Destroy(go);
+            // print("Triggered Cargo");
+        }else
         {
             print("Triggered by non-Enemy: " + go.name);
         }

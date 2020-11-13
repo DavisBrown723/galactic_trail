@@ -7,7 +7,7 @@ public class PersistentData : MonoBehaviour
     public static string ChosenSide = "";
     public static int numCargo = 0;
     public static int valuePerCargo = 10;
-    public static int numPoints = 450;
+    public static int numPoints = 0;
 
     public static List<Weapon> playerWeapons;
 

@@ -1793,6 +1793,10 @@ PrefabInstance:
       propertyPath: _shieldLevel
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2706342178097901738, guid: 4d0bdefdfbfaf8a418fc5b60552c1f20, type: 3}
+      propertyPath: speed
+      value: 33
+      objectReference: {fileID: 0}
     - target: {fileID: 8584174825121410201, guid: 4d0bdefdfbfaf8a418fc5b60552c1f20, type: 3}
       propertyPath: m_Name
       value: Military

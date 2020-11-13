@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ShotgunWeapon : Weapon
 {
-    private GameObject projectilePrefab;
-
-    public ShotgunWeapon(string weaponName, Ship parent, GameObject projPrefab, float muzzleVelocity, int ammo) : base(weaponName, parent, muzzleVelocity, ammo) {
-        projectilePrefab = projPrefab;
+    public ShotgunWeapon(Ship parent) : base("Triple Shot", parent) {
+        ammoRemaining = -1;
+        muzzleVelocity = 40f;
+        projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectile");
     }
 
     public override void fire() {

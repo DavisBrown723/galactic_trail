@@ -28,6 +28,7 @@ public class Ship : MonoBehaviour
             return false;
 
         weapons.Add(weapon.name, weapon);
+        weapon.attachToShip(this);
         return true;
     }
 

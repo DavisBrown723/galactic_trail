@@ -31,13 +31,13 @@ public class Hero : Ship
 
     }
 
-    void Awake()
+    void Start()
     {
-        addWeapon(new StandardWeapon("Basic", this, projectilePrefab, 40, -1));
-        addWeapon(new ShotgunWeapon("Shotgun", this, projectilePrefab, 40, -1));
-
-        assignWeaponToSlot(getWeapon("Basic"), 0);
-        assignWeaponToSlot(getWeapon("Shotgun"), 1);
+        int i = 0;
+        foreach(var weapon in PersistentData.playerWeapons) {
+            addWeapon(weapon);
+            assignWeaponToSlot(weapon, i++);
+        }
 
         selectWeaponSlot(0);
 
@@ -139,7 +139,8 @@ public class Hero : Ship
             shieldLevel++;
             Destroy(go);
         }else if(go.tag == "Cargo"){
-            CargoPickUp.numCargo = CargoPickUp.numCargo + 1;
+            PersistentData.numCargo += 1;
+            // CargoPickUp.numCargo = CargoPickUp.numCargo + 1;
             Destroy(go);
             // print("Triggered Cargo");
         }else

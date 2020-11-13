@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class CargoPickUp : MonoBehaviour
 {
-    static public int numCargo = 0; 
+    // static public int numCargo = 0; 
     void Update(){
         Text gt = this.GetComponent<Text>();
-        gt.text = "Cargo Retrieved: "+numCargo;
+        gt.text = "Cargo Retrieved: " + PersistentData.numCargo;
     }// end Update()
 }// end class CargoPickUp

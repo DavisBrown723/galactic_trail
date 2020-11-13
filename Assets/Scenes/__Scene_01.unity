@@ -1076,6 +1076,7 @@ GameObject:
   - component: {fileID: 866969091}
   - component: {fileID: 866969090}
   - component: {fileID: 866969089}
+  - component: {fileID: 866969093}
   - component: {fileID: 866969092}
   m_Layer: 5
   m_Name: AlienShipButton
@@ -1146,6 +1147,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 866969093}
+        m_TargetAssemblyTypeName: ShipSelection, Assembly-CSharp
+        m_MethodName: SelectSide
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Alien
+          m_BoolArgument: 0
+        m_CallState: 1
       - m_Target: {fileID: 866969092}
         m_TargetAssemblyTypeName: LoadAScene, Assembly-CSharp
         m_MethodName: LoadNextOrPrevScene
@@ -1157,7 +1170,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: _Scene_AlienShip
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &866969090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1206,6 +1219,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b808f7efff946db4788cf8326b3e4b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &866969093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866969087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23745326fdb791f4683b738852b45f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &888484640
@@ -1492,6 +1517,7 @@ GameObject:
   - component: {fileID: 1056234152}
   - component: {fileID: 1056234151}
   - component: {fileID: 1056234150}
+  - component: {fileID: 1056234154}
   - component: {fileID: 1056234153}
   m_Layer: 5
   m_Name: EarthShipButton
@@ -1562,6 +1588,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1056234154}
+        m_TargetAssemblyTypeName: ShipSelection, Assembly-CSharp
+        m_MethodName: SelectSide
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Earth
+          m_BoolArgument: 0
+        m_CallState: 1
       - m_Target: {fileID: 1056234153}
         m_TargetAssemblyTypeName: LoadAScene, Assembly-CSharp
         m_MethodName: LoadNextOrPrevScene
@@ -1573,7 +1611,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: _Scene_EarthShip
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &1056234151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1622,6 +1660,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b808f7efff946db4788cf8326b3e4b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1056234154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056234148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23745326fdb791f4683b738852b45f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1107314131

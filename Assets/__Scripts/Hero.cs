@@ -81,6 +81,12 @@ public class Hero : Ship
         if (Input.GetKeyDown(KeyCode.Space))
         {
             FireWeapon();
+
+            // update currently selected hotbar item ammo
+            var currentWeaponSlot = weaponSlots[selectedWeaponSlot];
+            var selectedWeapon = getWeapon(currentWeaponSlot.weapon);
+            string ammoRemaining = Mathf.Max(selectedWeapon.ammoRemaining, -1) == -1 ? "∞" : selectedWeapon.ammoRemaining.ToString(); 
+            currentWeaponSlot.uiButton.GetComponentInChildren<Text>().text = selectedWeapon.name + " (" + ammoRemaining + ")";
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) {
@@ -97,7 +103,8 @@ public class Hero : Ship
     void assignWeaponToSlot(Weapon weapon, int slot) {
         var weaponHotbar = GameObject.Find("WeaponHotbar");
         var hotbarButton = Instantiate(Resources.Load<Button>("Prefabs/WeaponHotbarItem"), weaponHotbar.transform) as Button;
-        hotbarButton.GetComponentInChildren<Text>().text = (weaponSlots.Count + 1).ToString();
+        string ammoRemaining = Mathf.Max(weapon.ammoRemaining, -1) == -1 ? "∞" : weapon.ammoRemaining.ToString(); 
+        hotbarButton.GetComponentInChildren<Text>().text = weapon.name + " (" + ammoRemaining + ")";
 
         weaponSlots.Add(new HotbarListItem(weapon.name, hotbarButton));
     }

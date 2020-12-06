@@ -4,5 +4,4 @@ Library/*
 *.sln
 *.csproj
 obj/*
-Assets/**/*.meta
 .vscode/settings.json

@@ -5,6 +5,16 @@ using UnityEngine.UI;
 
 public class Hero : Ship
 {
+    private struct HotbarListItem {
+        public string weapon;
+        public Button uiButton;
+
+        public HotbarListItem(string wep, Button button) {
+            weapon = wep;
+            uiButton = button;
+        }
+    }
+
     static public Hero s;       //Singleton
     public enum FireMode { Basic, Triangle };
 
@@ -24,7 +34,7 @@ public class Hero : Ship
 
     private GameObject lastTriggerGo = null;    //added on pg573
 
-    private string[] weaponSlots = new string[] {"","","",""};
+    private List<HotbarListItem> weaponSlots = new List<HotbarListItem>();
     int selectedWeaponSlot = -1;
 
     public Hero() {
@@ -85,26 +95,28 @@ public class Hero : Ship
     }
 
     void assignWeaponToSlot(Weapon weapon, int slot) {
-        weaponSlots[slot] = weapon.name;
+        var weaponHotbar = GameObject.Find("WeaponHotbar");
+        var hotbarButton = Instantiate(Resources.Load<Button>("Prefabs/WeaponHotbarItem"), weaponHotbar.transform) as Button;
+        hotbarButton.GetComponentInChildren<Text>().text = (weaponSlots.Count + 1).ToString();
+
+        weaponSlots.Add(new HotbarListItem(weapon.name, hotbarButton));
     }
 
     void selectWeaponSlot(int slot) {
-        if (slot < 0 || slot > 3 || getWeapon(weaponSlots[slot]) == null)
+        if (slot < 0 || slot > 3 || getWeapon(weaponSlots[slot].weapon) == null)
             return;
 
         if (selectedWeaponSlot >= 0) {
-            string oldButtonName = "ButtonWeapon" + selectedWeaponSlot.ToString();
-            var oldSelButton = GameObject.Find(oldButtonName).GetComponent<Button>();
+            var oldSelButton = weaponSlots[selectedWeaponSlot].uiButton;
             var oldColors = oldSelButton.colors;
             oldColors.normalColor = Color.white;
             oldSelButton.colors = oldColors;
         }
 
         selectedWeaponSlot = slot;
-        selectWeapon(weaponSlots[slot]);
+        selectWeapon(weaponSlots[slot].weapon);
 
-        string newButtonName = "ButtonWeapon" + slot.ToString();
-        var newSelButton = GameObject.Find(newButtonName).GetComponent<Button>();
+        var newSelButton = weaponSlots[slot].uiButton;
         var newColors = newSelButton.colors;
         newColors.normalColor = Color.blue;
         newSelButton.colors = newColors;

@@ -8,10 +8,16 @@ public class UpgradeMenu : MonoBehaviour
     private class WeaponUpgrade {
         public Weapon weapon;
         public int cost;
+        public int initialAmmo;
+        public int ammoBatchSize;
+        public int ammoCost;
 
-        public WeaponUpgrade(Weapon upgrade, int upgradeCost) {
+        public WeaponUpgrade(Weapon upgrade, int upgradeCost, int initAmmo, int ammoSize, int ammoPrice) {
             weapon = upgrade;
             cost = upgradeCost;
+            initialAmmo = initAmmo;
+            ammoCost = ammoPrice;
+            ammoBatchSize = ammoSize;
         }
     }
 
@@ -24,9 +30,9 @@ public class UpgradeMenu : MonoBehaviour
 
     void Awake() {
         availableWeaponUpgrades = new List<WeaponUpgrade>() {
-            new WeaponUpgrade(new StandardWeapon(null), 50),
-            new WeaponUpgrade(new ShotgunWeapon(null), 100),
-            new WeaponUpgrade(new HomingMissileWeapon(null), 200)
+            new WeaponUpgrade(new StandardWeapon(null), 50, -1, -1, -1),
+            new WeaponUpgrade(new ShotgunWeapon(null), 100, 5, 3, 50),
+            new WeaponUpgrade(new HomingMissileWeapon(null), 200, 3, 1, 50)
         };
 
         PopulateWeaponUpgradeMenu();
@@ -46,13 +52,23 @@ public class UpgradeMenu : MonoBehaviour
 
             itemText.GetComponent<Text>().text = upgrade.weapon.name;
             if (playerHasWeapon(upgrade.weapon.name)) {
-                itemBuyButton.transform.GetChild(0).GetComponent<Text>().text = "Owned!";
+                string playerWeaponAmmo = Mathf.Max(getPlayerWeaponAmmo(upgrade.weapon.name), -1).ToString();
+                if (playerWeaponAmmo == "-1")
+                    playerWeaponAmmo = "∞";
+                
+                itemText.GetComponent<Text>().text = upgrade.weapon.name + " Ammo (" + playerWeaponAmmo + ")";
+
+                if (upgrade.ammoCost == -1) {
+                    itemBuyButton.transform.GetChild(0).GetComponent<Text>().text = "Infinite Ammo";
+                } else {
+                    itemBuyButton.transform.GetChild(0).GetComponent<Text>().text = "Buy " + upgrade.ammoBatchSize.ToString() + ": " + upgrade.ammoCost.ToString() + " pts";
+                }
             } else {
                 itemBuyButton.transform.GetChild(0).GetComponent<Text>().text = "Buy: " + upgrade.cost.ToString() + " pts";
             }
 
             var button =itemBuyButton.GetComponent<Button>();
-            itemBuyButton.GetComponent<Button>().onClick.AddListener(() => BuyWeaponUpgrade(itemBuyButton, upgrade.weapon.name));
+            itemBuyButton.GetComponent<Button>().onClick.AddListener(() => BuyWeaponUpgrade(itemText, itemBuyButton, upgrade.weapon.name));
         }
     }
 
@@ -60,23 +76,59 @@ public class UpgradeMenu : MonoBehaviour
         return PersistentData.playerWeapons.Find(weapon => weapon.name == weaponName) != null;
     }
 
-    private void markListItemOwned(Transform buttonTransform) {
-        buttonTransform.GetChild(0).GetComponent<Text>().text = "Owned!";
+    private int getPlayerWeaponAmmo(string weaponName) {
+        if (!playerHasWeapon(weaponName))
+            return 0;
+
+        return PersistentData.playerWeapons.Find(weapon => weapon.name == weaponName).ammoRemaining;
     }
 
-    public void BuyWeaponUpgrade(Transform clickedButtonTransform, string weaponName) {
+    private void markListItemOwned(Transform clickedItemText, Transform buttonTransform, WeaponUpgrade upgrade) {
+        string playerWeaponAmmo = getPlayerWeaponAmmo(upgrade.weapon.name).ToString();
+        clickedItemText.GetComponent<Text>().text = upgrade.weapon.name + " Ammo (" + playerWeaponAmmo + ")";
+
+        buttonTransform.GetChild(0).GetComponent<Text>().text = "Buy " + upgrade.ammoBatchSize.ToString() + ": " + upgrade.ammoCost.ToString() + " pts";
+    }
+
+    private void updateListItemAmmoOwned(Transform clickedItemText, WeaponUpgrade upgrade) {
+        string playerWeaponAmmo = getPlayerWeaponAmmo(upgrade.weapon.name).ToString();
+        clickedItemText.GetComponent<Text>().text = upgrade.weapon.name + " Ammo (" + playerWeaponAmmo + ")";
+    }
+
+    public void BuyWeaponUpgrade(Transform clickedItemText, Transform clickedButtonTransform, string weaponName) {
         WeaponUpgrade upgrade = availableWeaponUpgrades.Find(item => item.weapon.name == weaponName);
         if (upgrade == null)
             return;
 
-        if (PersistentData.numPoints >= upgrade.cost) {
-            if (playerHasWeapon(weaponName))
+        if (playerHasWeapon(weaponName)) {
+            // we are trying to buy ammo
+
+            // exit if weapon has infinite ammo
+            if (upgrade.ammoCost == -1)
                 return;
 
-            PersistentData.playerWeapons.Add(upgrade.weapon);
-            markListItemOwned(clickedButtonTransform);
+            if (PersistentData.numPoints >= upgrade.ammoCost) {
+                var playerWeapon = PersistentData.playerWeapons.Find(weapon => weapon.name == upgrade.weapon.name);
+                playerWeapon.ammoRemaining += upgrade.ammoBatchSize;
+                updateListItemAmmoOwned(clickedItemText, upgrade);
 
-            PersistentData.numPoints -= upgrade.cost;
+                PersistentData.numPoints -= upgrade.ammoCost;
+            }
+        } else {
+            // we are buying a new weapon
+
+            if (PersistentData.numPoints >= upgrade.cost) {
+                if (playerHasWeapon(weaponName))
+                    return;
+
+                Weapon newWeapon = upgrade.weapon;
+                newWeapon.ammoRemaining = upgrade.initialAmmo;
+
+                PersistentData.playerWeapons.Add(newWeapon);
+                markListItemOwned(clickedItemText, clickedButtonTransform, upgrade);
+
+                PersistentData.numPoints -= upgrade.cost;
+            }
         }
     }
 }

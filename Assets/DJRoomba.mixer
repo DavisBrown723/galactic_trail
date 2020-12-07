@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-3669112596424726068
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SFX
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 909e63b0be6cf2b41abb9dec5a53f9b3
+  m_Children: []
+  m_Volume: 773b7b08ec02989439a80a1ed391f603
+  m_Pitch: f3afcecbe5e22ee468b192963193a49c
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -1555916935721198645}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &-1555916935721198645
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: c165407fbe9796b46b0f9c79f55178b0
+  m_EffectName: Attenuation
+  m_MixLevel: 46be47bc03ab50449820a1b416ebac50
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -15,11 +48,16 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 1e2f3a37f450fb94ba4639424d111af1
+    name: MusicVol
+  - guid: 773b7b08ec02989439a80a1ed391f603
+    name: SFXVolume
   m_AudioMixerGroupViews:
   - guids:
     - a9ad071c2914e404384784f332b3eda6
     - 679cad863d641c24eafce7f2131101cd
+    - 909e63b0be6cf2b41abb9dec5a53f9b3
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -34,6 +72,7 @@ AudioMixerGroupController:
   m_GroupID: a9ad071c2914e404384784f332b3eda6
   m_Children:
   - {fileID: 660703133547285357}
+  - {fileID: -3669112596424726068}
   m_Volume: 1a525e107497be14c8e9a434d68bf427
   m_Pitch: 6b3748c415aadbf40b97eeee7088414b
   m_Send: 00000000000000000000000000000000
@@ -69,7 +108,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     0d9d2873a74a7ae4ca8ea5bf9ba2af2e: -30.320126
     b3a169657044af746a6339826c41fa2b: -28.727043
-    1e2f3a37f450fb94ba4639424d111af1: -19.928473
+    1e2f3a37f450fb94ba4639424d111af1: 0.04171297
     1a5cc2cba8cb0504292be7ed343ec96a: -2.91
   m_TransitionOverrides: {}
 --- !u!243 &660703133547285357

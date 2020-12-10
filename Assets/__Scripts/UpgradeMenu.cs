@@ -21,7 +21,23 @@ public class UpgradeMenu : MonoBehaviour
         }
     }
 
+    private class UtilityUpgrade {
+        public string name;
+        public int cost;
+        public List<string> prerequisites;
+
+        public UtilityUpgrade(string upgradeName, int price, List<string> prereqs = null) {
+            if (prereqs == null)
+                prereqs = new List<string>();
+
+            name = upgradeName;
+            cost = price;
+            prerequisites = prereqs;
+        }
+    }
+
     List<WeaponUpgrade> availableWeaponUpgrades;
+    List<UtilityUpgrade> availableUtilityUpgrades;
 
     void Start()
     {
@@ -35,7 +51,14 @@ public class UpgradeMenu : MonoBehaviour
             new WeaponUpgrade(new HomingMissileWeapon(null), 200, 3, 1, 50)
         };
 
+        availableUtilityUpgrades = new List<UtilityUpgrade>() {
+            new UtilityUpgrade("Speed Increase I", 150),
+            new UtilityUpgrade("Speed Increase II", 150, new List<string>{"Speed Increase I"})
+        };
+
+
         PopulateWeaponUpgradeMenu();
+        PopulateUtilityUpgradeMenu();
     }
 
     void Update()
@@ -69,6 +92,38 @@ public class UpgradeMenu : MonoBehaviour
 
             var button =itemBuyButton.GetComponent<Button>();
             itemBuyButton.GetComponent<Button>().onClick.AddListener(() => BuyWeaponUpgrade(itemText, itemBuyButton, upgrade.weapon.name));
+        }
+    }
+
+    public void PopulateUtilityUpgradeMenu() {
+        GameObject utilityUpgradeList = GameObject.Find("UtilityUpgradeListContent");
+
+        foreach (Transform child in utilityUpgradeList.transform)
+            Destroy(child.gameObject);
+
+        foreach(var upgrade in availableUtilityUpgrades) {
+            if (!PersistentData.playerUpgrades.Contains(upgrade.name)) {
+                // verify prerequisites are owned
+                bool allPrereqsOwned = true;
+                foreach(string prereq in upgrade.prerequisites) {
+                    if (!PersistentData.playerUpgrades.Contains(prereq)) {
+                        allPrereqsOwned = false;
+                        break;
+                    }
+                }
+
+                if (allPrereqsOwned) {
+                    var item = Instantiate(Resources.Load("Prefabs/WeaponUpgradeListItem"), utilityUpgradeList.transform) as GameObject;
+                    var itemText = item.transform.GetChild(0);
+                    var itemBuyButton = item.transform.GetChild(1);
+
+                    itemText.GetComponent<Text>().text = upgrade.name;
+                    itemBuyButton.transform.GetChild(0).GetComponent<Text>().text = "Buy: " + upgrade.cost.ToString() + " pts";
+
+                    var button =itemBuyButton.GetComponent<Button>();
+                    itemBuyButton.GetComponent<Button>().onClick.AddListener(() => BuyUtilityUpgrade(itemText, itemBuyButton, upgrade.name));
+                }
+            }
         }
     }
 
@@ -130,5 +185,19 @@ public class UpgradeMenu : MonoBehaviour
                 PersistentData.numPoints -= upgrade.cost;
             }
         }
+    }
+
+    void BuyUtilityUpgrade(Transform clickedItemText, Transform clickedButtonTransform, string upgradeName) {
+        UtilityUpgrade upgrade = availableUtilityUpgrades.Find(item => item.name == upgradeName);
+        if (upgrade == null)
+            return;
+
+        if (PersistentData.numPoints < upgrade.cost)
+            return;
+
+        PersistentData.playerUpgrades.Add(upgrade.name);
+        PersistentData.numPoints -= upgrade.cost;
+
+        PopulateUtilityUpgradeMenu();
     }
 }

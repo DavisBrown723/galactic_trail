@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +38,8 @@ public class Hero : Ship
     private List<HotbarListItem> weaponSlots = new List<HotbarListItem>();
     int selectedWeaponSlot = -1;
 
+    private double timeLastFire;
+
     public Hero() {
 
     }
@@ -48,6 +51,12 @@ public class Hero : Ship
             addWeapon(weapon);
             assignWeaponToSlot(weapon, i++);
         }
+
+        foreach(var upgrade in PersistentData.playerUpgrades) {
+            addUpgrade(upgrade);
+        }
+
+        timeLastFire = Time.realtimeSinceStartup;
 
         selectWeaponSlot(0);
 
@@ -69,9 +78,13 @@ public class Hero : Ship
         float yAxis = Input.GetAxis("Vertical");
 
         //Change transform.position based on the axes
+        float speedBoost = 1.0f;
+        if (hasUpgrade("Speed Increase I")) speedBoost += 0.1f;
+        if (hasUpgrade("Speed Increase II")) speedBoost += 0.1f;
+
         Vector3 pos = transform.position;
-        pos.x += xAxis * speed * Time.deltaTime;
-        pos.y += yAxis * speed * Time.deltaTime;
+        pos.x += xAxis * speed * speedBoost * Time.deltaTime;
+        pos.y += yAxis * speed * speedBoost * Time.deltaTime;
         transform.position = pos;
 
         //Rotate the ship to make it feel more dynamic based on the speed which the ship is moving
@@ -80,7 +93,11 @@ public class Hero : Ship
         // Allow the ship to fire //Added pg579
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            FireWeapon();
+            double currTime = Time.realtimeSinceStartup;
+            if (currTime - timeLastFire > 0.22) {
+                FireWeapon();
+                timeLastFire = currTime;
+            }
 
             // update currently selected hotbar item ammo
             var currentWeaponSlot = weaponSlots[selectedWeaponSlot];
@@ -110,7 +127,7 @@ public class Hero : Ship
     }
 
     void selectWeaponSlot(int slot) {
-        if (slot < 0 || slot > 3 || getWeapon(weaponSlots[slot].weapon) == null)
+        if (slot < 0 || slot >= weaponSlots.Count || getWeapon(weaponSlots[slot].weapon) == null)
             return;
 
         if (selectedWeaponSlot >= 0) {

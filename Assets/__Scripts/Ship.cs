@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ship : MonoBehaviour
 {
     private Dictionary<string, Weapon> weapons = new Dictionary<string, Weapon>();
+    private List<string> upgrades = new List<string>();
     private string selectedWeapon = "";
 
     public Vector3 pos
@@ -58,5 +59,18 @@ public class Ship : MonoBehaviour
         if (weapon != null) {
             weapon.fire();
         }
+    }
+
+    public void addUpgrade(string name) {
+        if (!hasUpgrade(name))
+            upgrades.Add(name);
+    }
+
+    public bool hasUpgrade(string name) {
+        return upgrades.Contains(name);
+    }
+
+    public void removeUpgrade(string name) {
+        upgrades.Remove(name);
     }
 }

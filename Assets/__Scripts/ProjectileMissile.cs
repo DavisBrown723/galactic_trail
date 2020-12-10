@@ -44,7 +44,6 @@ public class ProjectileMissile : MonoBehaviour
         var radarReturns = new List<Transform>();
         foreach(var angle in radarSeekAngles) {
             RaycastHit hit;
-            Debug.DrawRay(transform.position, angle * Mathf.Infinity, Color.yellow);
             if (Physics.Raycast(transform.position, angle, out hit, Mathf.Infinity, layers)) {         
                 radarReturns.Add(hit.transform);
             }
@@ -75,14 +74,11 @@ public class ProjectileMissile : MonoBehaviour
         }
 
         Vector3 offset = lockedTarget.position -  transform.position;
-        Debug.Log("[" + offset.x.ToString() + ", " + offset.y.ToString() + ", " + offset.z.ToString());
 
         if (offset.x < 0) {
             GetComponent<Rigidbody>().velocity = Vector3.up * 25f + Vector3.left * 25f;
         } else {
             GetComponent<Rigidbody>().velocity = Vector3.up * 25f + Vector3.right * 25f;
         }
-
-        // transform.position = Vector3.Lerp(transform.position, lockedTarget.position, Time.deltaTime * 0.5f);
     }
 }

@@ -1037,7 +1037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 8, y: -10}
+  m_AnchoredPosition: {x: 8, y: -35}
   m_SizeDelta: {x: 250, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &747781510
@@ -1073,9 +1073,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Utility Upgrades
-
-    (Coming Soon)'
+  m_Text: Utility Upgrades
 --- !u!222 &747781511
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2082,8 +2080,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 440106866}
   m_HandleRect: {fileID: 440106865}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9999999
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2530,8 +2528,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 859543891}
   m_HandleRect: {fileID: 859543890}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3132,7 +3130,7 @@ GameObject:
   - component: {fileID: 2126908704}
   - component: {fileID: 2126908703}
   m_Layer: 5
-  m_Name: WeaponUpgradeListContent
+  m_Name: UtilityUpgradeListContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
